@@ -90,7 +90,7 @@
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(196,181,253,.25);
     }
-    .topbar nav{ display:flex; gap: 28px;}
+    .topbar nav{ display:flex; gap: 28px; margin-left: auto; margin-right: 28px;}
     .topbar nav a{
       font-size: 14px; color: var(--ink-soft); text-decoration: none;
       font-weight: 500; transition: color .2s;
@@ -991,13 +991,6 @@
         <li>AI 구강 분석 앱</li>
       </ul>
 
-      <form class="hero-quick-form" id="form-hero" onsubmit="submitForm(event)">
-        <input type="tel" name="phone" placeholder="010-0000-0000" inputmode="numeric" required />
-        <button type="submit">사전예약 →</button>
-      </form>
-      <div class="hero-quick-note">
-        <span>⚡ <strong id="slot-num">387</strong>명 예약 완료 · 남은 자리 <strong id="slot-left">113</strong>석</span>
-      </div>
     </div>
 
     <div class="hero-visual">
@@ -1498,8 +1491,10 @@
   setInterval(()=>{
     if(Math.random()>0.6 && slot < 495){
       slot++;
-      document.getElementById('slot-num').textContent = slot;
-      document.getElementById('slot-left').textContent = 500 - slot;
+      const numEl = document.getElementById('slot-num');
+      const leftEl = document.getElementById('slot-left');
+      if(numEl) numEl.textContent = slot;
+      if(leftEl) leftEl.textContent = 500 - slot;
     }
   }, 15000);
 
